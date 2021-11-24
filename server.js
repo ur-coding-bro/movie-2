@@ -67,6 +67,9 @@ app.post(
 
 app.get("/logout", (req, res) => {
   req.logOut();
+  session({
+    cookie: { maxAge: 1 },
+  });
   res.redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
