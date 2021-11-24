@@ -68,6 +68,7 @@ app.post(
 
 app.get("/logout", (req, res) => {
   req.logOut();
+  req.user.username = "";
   res.redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
