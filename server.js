@@ -1,6 +1,5 @@
 const express = require("express");
 require("dotenv").config();
-
 const mongoose = require("mongoose");
 const app = express();
 const bcrypt = require("bcrypt");
@@ -68,7 +67,6 @@ app.post(
 
 app.get("/logout", (req, res) => {
   req.logOut();
-  req.user.username = "";
   res.redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
