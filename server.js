@@ -70,10 +70,10 @@ app.get("/logout", (req, res) => {
   res.clearCookie("connect.sid").redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
-  if (req.user.username) {
-    res.json({ username: req.user.username, email: req.user.email });
-  } else {
+  if (req.user) {
     res.json({ username: "", email: "" });
+  } else {
+    res.json({ username: req.user.username, email: req.user.email });
   }
 });
 //end of auth system
