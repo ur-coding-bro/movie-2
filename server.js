@@ -67,13 +67,14 @@ app.post(
 
 app.get("/logout", (req, res) => {
   req.logOut();
-  session({
-    cookie: { maxAge: 1 },
-  });
-  res.redirect("http://localhost:3000/login");
+  res.clearCookie("connect.sid").redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
-  res.json({ username: req.user.username, email: req.user.email });
+  if (req.user.username) {
+    res.json({ username: req.user.username, email: req.user.email });
+  } else {
+    res.json({ username: "", email: "" });
+  }
 });
 //end of auth system
 mongoose.connect(process.env.ACC).then(() => {
