@@ -71,9 +71,9 @@ app.get("/logout", (req, res) => {
 });
 app.get("/res", (req, res) => {
   if (req.user) {
-    res.json({ username: "", email: "" });
-  } else {
     res.json({ username: req.user.username, email: req.user.email });
+  } else {
+    res.json({ username: "", email: "" });
   }
 });
 //end of auth system
