@@ -32,9 +32,6 @@ app.use(
     saveUninitialized: false,
 
     secret: process.env.SECRET,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 5,
-    },
   })
 );
 app.use(passport.initialize());
@@ -67,7 +64,7 @@ app.post(
 
 app.get("/logout", (req, res) => {
   req.logOut();
-  res.clearCookie("connect.sid").redirect("http://localhost:3000/login");
+  res.redirect("http://localhost:3000/login");
 });
 app.get("/res", (req, res) => {
   if (req.user) {
